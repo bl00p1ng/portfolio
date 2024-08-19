@@ -1,0 +1,47 @@
+.social-pill {
+  @apply inline-flex items-center justify-center gap-2 px-4 py-2
+         text-button-text text-sm font-medium transition-all duration-300 rounded-full
+         focus:outline-none focus-visible:ring-2 focus-visible:ring-highlight
+         bg-white/15 backdrop-blur-xl border border-white/25
+         hover:bg-white/25 hover:border-white/40 hover:scale-105
+         hover:shadow-lg hover:shadow-highlight/30
+         active:bg-white/30 relative overflow-hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.social-pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.social-pill:hover::before {
+  opacity: 1;
+}
+
+.social-pill::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  transform: scale(0);
+  z-index: -1;
+}
+
+.social-pill:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}

@@ -1,0 +1,13 @@
+@keyframes blur {
+  to {
+    backdrop-filter: blur(20px);
+    background-color: rgba(22, 22, 26, 0.8);
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+  }
+}
+#header-nav {
+  animation: blur linear both 0.5s;
+  animation-timeline: scroll();
+  animation-range: 0 500px;
+}

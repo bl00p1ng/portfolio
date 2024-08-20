@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BadgeComponent } from "../../badge/badge/badge.component";
+import { BadgeComponent } from "../badge/badge.component";
 
 @Component({
   selector: 'app-hero',

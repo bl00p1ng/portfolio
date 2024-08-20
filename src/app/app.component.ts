@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/components/header/header/header.component';
 import { HeroComponent } from "./shared/components/hero/hero/hero.component";
+import { ExperienceComponent } from "./shared/components/experience/experience.component";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import { HeroComponent } from "./shared/components/hero/hero/hero.component";
   imports: [
     RouterOutlet,
     HeaderComponent,
-    HeroComponent
+    HeroComponent,
+    ExperienceComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

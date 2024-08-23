@@ -10,7 +10,10 @@
   <div class="relative flex flex-col gap-2 pb-4 text-paragraph dark:text-gray-300 md:col-span-3">
     {{ experience.description }}
     @if (experience.link) {
-      <a [href]="experience.link" class="inline-flex items-center text-highlight hover:underline">
+      <button
+        (click)="openModal()"
+        class="inline-flex items-center text-highlight hover:underline"
+      >
         Saber más
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +30,13 @@
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <path d="M9 6l6 6l-6 6" />
         </svg>
-      </a>
+      </button>
     }
   </div>
 </div>
+
+<app-modal
+  [experience]="experience"
+  [isOpen]="isModalOpen"
+  (closeModal)="closeModal()"
+></app-modal>

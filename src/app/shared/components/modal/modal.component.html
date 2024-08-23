@@ -1,0 +1,72 @@
+@if (isOpen) {
+  <div class="fixed inset-0 z-50 flex items-center justify-center">
+    <div class="absolute inset-0 bg-background/70 backdrop-blur-sm" (click)="close()"></div>
+      <div class="relative bg-gradient-to-br from-background via-background to-highlight/10 p-8 rounded-2xl shadow-2xl max-w-4xl w-full m-4 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-highlight/20 to-transparent opacity-20"></div>
+        <div class="relative z-10 max-h-[80vh] overflow-y-auto pr-4 custom-scrollbar">
+        <button
+          (click)="close()"
+          class="absolute top-4 right-4 text-paragraph hover:text-headline transition-colors duration-300"
+          aria-label="Close modal"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <div class="mt-4">
+          <div class="flex flex-col items-center mb-8">
+            @if (experience.logo) {
+              <img [src]="experience.logo" [alt]="experience.company + ' logo'" class="w-24 h-24 mb-4">
+            }
+          </div>
+          <div>
+            <h2 class="text-3xl font-bold text-headline mb-2">{{ experience.fullTitle || experience.title }}</h2>
+            <h3 class="text-2xl font-semibold text-highlight">{{ experience.company }}</h3>
+          </div>
+
+          @if (experience.overview) {
+            <p class="text-lg mb-8 text-paragraph leading-relaxed">{{ experience.overview }}</p>
+          }
+
+          @if (experience.achievements && experience.achievements.length > 0) {
+            <h3 class="text-2xl font-semibold text-headline mb-4">Logros Principales</h3>
+            <ol class="space-y-6 mb-8">
+              @for (achievement of experience.achievements; track achievement.title) {
+                <li>
+                  <h4 class="text-xl font-semibold text-highlight mb-3">{{ achievement.title }}</h4>
+                  <ul class="list-disc list-inside space-y-2">
+                    @for (detail of achievement.details; track detail) {
+                      <li class="text-paragraph">{{ detail }}</li>
+                    }
+                  </ul>
+                </li>
+              }
+            </ol>
+          }
+
+          @if (experience.businessImpact && experience.businessImpact.length > 0) {
+            <h3 class="text-2xl font-semibold text-headline mb-4">Impacto en el Negocio</h3>
+            <ul class="list-none space-y-3 mb-8">
+              @for (impact of experience.businessImpact; track impact) {
+                <li class="flex items-start">
+                  <span class="text-highlight mr-3">•</span>
+                  <span class="text-paragraph">{{ impact }}</span>
+                </li>
+              }
+            </ul>
+          }
+
+          @if (experience.skills && experience.skills.length > 0) {
+            <h3 class="text-2xl font-semibold text-headline mb-4">Habilidades Técnicas Destacadas</h3>
+            <div class="flex flex-wrap gap-2">
+              @for (skill of experience.skills; track skill) {
+                <span class="bg-highlight/20 text-highlight px-3 py-1 rounded-full text-sm">{{ skill }}</span>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}
